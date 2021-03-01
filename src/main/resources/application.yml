@@ -1,0 +1,11 @@
+micronaut:
+  server:
+    port: 8082
+  application:
+    name: demo
+
+nats:
+  addresses:
+    - "nats://localhost:4222"
+  username: guest
+  password: guest
