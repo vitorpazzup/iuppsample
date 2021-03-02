@@ -1,6 +1,8 @@
 micronaut:
   server:
     port: 8082
+    netty:
+      log-level: DEBUG
   application:
     name: demo
 
