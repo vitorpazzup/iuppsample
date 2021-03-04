@@ -19,9 +19,11 @@ class ProductExceptionHandler : ExceptionHandler<ProductException?, HttpResponse
 
     //TODO log handler
     //TODO steps gradle
+    val LOG : Logger = LoggerFactory.getLogger(ProductExceptionHandler::class.java)
     override fun handle(request: HttpRequest<*>, exception: ProductException?): HttpResponse<*> {
         val productError = ProductError(HttpStatus.BAD_REQUEST.toString(),400
             ,"invalid arguments")
+        LOG.error("REQUEST: {}", productError)
         return HttpResponse.badRequest(productError)
     }
 }
