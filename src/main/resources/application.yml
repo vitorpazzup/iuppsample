@@ -5,9 +5,11 @@ micronaut:
       log-level: DEBUG
   application:
     name: demo
-
+endpoints:
+  health:
+    enabled: true
 nats:
   addresses:
-    - "nats://localhost:4222"
+    - "localhost:4222"
   username: guest
   password: guest

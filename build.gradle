@@ -31,6 +31,8 @@ dependencies {
     implementation("javax.annotation:javax.annotation-api")
     implementation("io.micronaut:micronaut-http-client")
     implementation("io.micronaut.nats:micronaut-nats")
+    implementation("io.micronaut:micronaut-management")
+
     //handler
     annotationProcessor("io.micronaut:micronaut-validation")
     //Test
@@ -46,7 +48,7 @@ dependencies {
 
 
 application {
-    mainClass.set("com.itau.iupp.ApplicationKt")
+    mainClass.set("com.itau.ApplicationKt")
 }
 
 java {
@@ -69,4 +71,13 @@ tasks {
 
 test {
     useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'com.itau.ApplicationKt'
+        )
+    }
+    from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }}
 }

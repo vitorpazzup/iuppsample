@@ -22,7 +22,7 @@ class ProductServiceImpl(private val client: ProductClient): ProductService {
             Product(1L,product.name,product.price)
         )
         client.send(eventsInformation)
-        LOG.info("message successfully sent to the broker {}")
+        LOG.info("message successfully sent to the broker {}", eventsInformation.events.event)
         return product
     }
 }
