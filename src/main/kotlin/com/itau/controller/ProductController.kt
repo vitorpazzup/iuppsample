@@ -17,5 +17,4 @@ class ProductController(private val service: ProductService) {
         ProductUtils.productValid(product)
         return service.testNats(product)
     }
-
 }
