@@ -8,8 +8,4 @@ micronaut:
 endpoints:
   health:
     enabled: true
-nats:
-  addresses:
-    - "nats://localhost:4222"
-  username: "dark-lord"
-  password: "qUzfnpj2JudVcuqYpuTihRJE"
+
