@@ -10,6 +10,6 @@ endpoints:
     enabled: true
 nats:
   addresses:
-    - "nats://localhost:4222"
+    - "nats://dark-lord:qUzfnpj2JudVcuqYpuTihRJE@localhost:4222"
   username: "dark-lord"
   password: "qUzfnpj2JudVcuqYpuTihRJE"
