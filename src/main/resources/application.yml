@@ -9,7 +9,9 @@ endpoints:
   health:
     enabled: true
 nats:
+  enabled: false
   addresses:
-    - "nats://dark-lord:qUzfnpj2JudVcuqYpuTihRJE@localhost:4222"
-  username: "dark-lord"
-  password: "qUzfnpj2JudVcuqYpuTihRJE"
+    - "nats://nats-user:RYe6uCUFxC8q@nats-cluster.nats-io:4222"
+  max-reconnect: 2
+  utf8support: true
+  ping-interval: 5
