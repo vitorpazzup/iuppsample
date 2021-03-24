@@ -9,9 +9,7 @@ endpoints:
   health:
     enabled: true
 nats:
-  enabled: false
   addresses:
-    - "nats://nats-user:RYe6uCUFxC8q@nats-cluster.nats-io:4222"
-  max-reconnect: 2
-  utf8support: true
-  ping-interval: 5
+    - "nats://nats-cluster.nats-io:4222"
+  username: "nats-user"
+  password: "RYe6uCUFxC8q"

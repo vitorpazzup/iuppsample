@@ -3,13 +3,11 @@ package com.itau.controller
 import com.itau.controller.handler.ProductException
 import com.itau.model.dto.ProductDto
 import com.itau.service.ProductService
-import com.itau.service.impl.ProductServiceImpl
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
-import io.mockk.mockkObject
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
