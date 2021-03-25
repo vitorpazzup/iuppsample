@@ -1,7 +1,9 @@
 micronaut:
-  environments: k8s
+  env:
+    deduction: false
+  environments: dev
   server:
-    port: 8082
+    port: 80
     netty:
       log-level: DEBUG
   application:
