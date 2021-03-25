@@ -11,6 +11,6 @@ endpoints:
     enabled: true
 nats:
   addresses:
-    - "nats://localhost:4223"
-  username: guest
-  password: guest
+    - "nats://nats-cluster.nats-io:4222"
+  username: "nats-user"
+  password: "RYe6uCUFxC8q"
