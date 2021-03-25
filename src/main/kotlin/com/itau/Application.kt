@@ -7,7 +7,8 @@ fun main(args: Array<String>) {
 	build()
 	    .args(*args)
 		.packages("com.itau")
-		.banner(false)
+		.deduceEnvironment(false)
+		.defaultEnvironments("k8s")
 		.start()
 }
 
