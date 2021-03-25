@@ -1,5 +1,5 @@
 micronaut:
-  environments: dev
+  environments: k8s
   server:
     port: 8082
     netty:
