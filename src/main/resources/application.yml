@@ -8,4 +8,8 @@ micronaut:
 endpoints:
   health:
     enabled: true
-
+nats:
+  addresses:
+    - "nats://nats-cluster.nats-io:4222"
+  username: "nats-user"
+  password: "RYe6uCUFxC8q"
