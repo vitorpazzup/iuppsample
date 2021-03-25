@@ -1,6 +1,4 @@
 micronaut:
-  env:
-    deduction: false
   environments: dev
   server:
     port: 80
@@ -13,6 +11,6 @@ endpoints:
     enabled: true
 nats:
   addresses:
-    - "nats://nats-cluster.nats-io:4222"
-  username: "nats-user"
-  password: "RYe6uCUFxC8q"
+    - "nats://localhost:4222"
+  username: guest
+  password: guest
