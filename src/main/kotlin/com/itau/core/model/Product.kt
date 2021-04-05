@@ -1,4 +1,4 @@
-package com.itau.model
+package com.itau.core.model
 
 import java.math.BigDecimal
 

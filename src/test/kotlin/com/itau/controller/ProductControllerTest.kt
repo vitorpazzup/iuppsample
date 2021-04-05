@@ -1,8 +1,8 @@
 package com.itau.controller
 
-import com.itau.controller.handler.ProductException
+import com.itau.entrypoint.controller.handler.ProductException
+import com.itau.entrypoint.controller.ProductController
 import com.itau.model.dto.ProductDto
-import com.itau.service.ProductService
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs

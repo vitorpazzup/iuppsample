@@ -1,6 +1,6 @@
-package com.itau.utils
+package com.itau.entrypoint.utils
 
-import com.itau.controller.handler.ProductException
+import com.itau.entrypoint.controller.handler.ProductException
 import com.itau.model.dto.ProductDto
 import java.math.BigDecimal
 

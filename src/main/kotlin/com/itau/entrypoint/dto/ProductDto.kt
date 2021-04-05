@@ -1,4 +1,4 @@
-package com.itau.model.dto
+package com.itau.entrypoint.dto
 
 import java.math.BigDecimal
 

@@ -1,4 +1,4 @@
-package com.itau.controller.handler
+package com.itau.entrypoint.controller.handler
 
 class ProductException : RuntimeException(){
 

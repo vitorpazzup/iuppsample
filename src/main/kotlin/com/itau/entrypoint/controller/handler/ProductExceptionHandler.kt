@@ -1,4 +1,4 @@
-package com.itau.controller.handler
+package com.itau.entrypoint.controller.handler
 
 import io.micronaut.context.annotation.Requires;
 import io.micronaut.http.HttpRequest;
@@ -7,7 +7,7 @@ import io.micronaut.http.HttpStatus
 import io.micronaut.http.annotation.Produces;
 import io.micronaut.http.server.exceptions.ExceptionHandler;
 import javax.inject.Singleton;
-import com.itau.controller.ProductController
+import com.itau.entrypoint.controller.ProductController
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
