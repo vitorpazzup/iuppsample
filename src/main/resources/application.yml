@@ -3,7 +3,7 @@ micronaut:
     deduction: false
   environments: dev
   server:
-    port: 8082
+    port: 8080
     netty:
       log-level: DEBUG
   application:
