@@ -1,7 +1,7 @@
 package com.itau.entrypoint.utils
 
 import com.itau.entrypoint.controller.handler.ProductException
-import com.itau.model.dto.ProductDto
+import com.itau.entrypoint.dto.ProductDto
 import java.math.BigDecimal
 
 class ProductUtils {

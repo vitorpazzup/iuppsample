@@ -1,10 +1,10 @@
 package com.itau.service
 
+import com.itau.core.model.Events
+import com.itau.core.model.EventsInformationDto
+import com.itau.core.model.Product
+import com.itau.entrypoint.dto.ProductDto
 import com.itau.infrastructure.client.ProductClient
-import com.itau.model.Events
-import com.itau.model.EventsInformationDto
-import com.itau.model.Product
-import com.itau.model.dto.ProductDto
 import com.itau.infrastructure.service.ProductServiceImpl
 import io.mockk.MockKAnnotations
 import io.mockk.impl.annotations.InjectMockKs

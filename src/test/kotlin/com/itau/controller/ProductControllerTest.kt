@@ -1,8 +1,9 @@
 package com.itau.controller
 
-import com.itau.entrypoint.controller.handler.ProductException
 import com.itau.entrypoint.controller.ProductController
-import com.itau.model.dto.ProductDto
+import com.itau.entrypoint.controller.handler.ProductException
+import com.itau.entrypoint.dto.ProductDto
+import com.itau.infrastructure.service.ProductServiceImpl
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
@@ -21,7 +22,7 @@ class ProductControllerTest {
     lateinit var producerController: ProductController
 
     @MockK
-    lateinit var productService: ProductService
+    lateinit var productService: ProductServiceImpl
     lateinit var product: ProductDto
 
     @BeforeEach
@@ -32,7 +33,7 @@ class ProductControllerTest {
 
     @Test
     fun `request product with success`() {
-        every { productService.testNats(any()) } returns product
+        every { productService.sendNats(any()) } returns product
         val result = producerController.saveProduct(product)
         Assertions.assertEquals(product, result)
     }
