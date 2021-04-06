@@ -1,7 +1,7 @@
 package com.itau.infrastructure.service
 
-import com.itau.core.model.Events
-import com.itau.core.model.EventsInformationDto
+import com.itau.infrastructure.model.Events
+import com.itau.infrastructure.model.EventsInformationDto
 import com.itau.core.model.Product
 import com.itau.core.ports.ProductServicePort
 import com.itau.entrypoint.controller.handler.ProductExceptionHandler

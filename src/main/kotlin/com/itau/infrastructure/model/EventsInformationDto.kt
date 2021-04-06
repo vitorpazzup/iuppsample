@@ -1,5 +1,6 @@
-package com.itau.core.model
+package com.itau.infrastructure.model
 
+import com.itau.core.model.Product
 import java.math.BigDecimal
 
 data class EventsInformationDto(

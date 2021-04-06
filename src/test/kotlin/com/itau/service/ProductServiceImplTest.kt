@@ -1,7 +1,7 @@
 package com.itau.service
 
-import com.itau.core.model.Events
-import com.itau.core.model.EventsInformationDto
+import com.itau.infrastructure.model.Events
+import com.itau.infrastructure.model.EventsInformationDto
 import com.itau.core.model.Product
 import com.itau.entrypoint.dto.ProductDto
 import com.itau.infrastructure.client.ProductClient
