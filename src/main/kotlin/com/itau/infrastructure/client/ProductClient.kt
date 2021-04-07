@@ -10,6 +10,4 @@ import javax.inject.Singleton
 interface ProductClient {
     @Subject("my-products")
     fun send(eventsInformationDto: EventsInformationDto)
-
-    fun sendProduct()
 }

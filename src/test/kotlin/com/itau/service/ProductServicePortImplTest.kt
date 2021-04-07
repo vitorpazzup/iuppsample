@@ -5,7 +5,7 @@ import com.itau.infrastructure.model.EventsInformationDto
 import com.itau.core.model.Product
 import com.itau.entrypoint.dto.ProductDto
 import com.itau.infrastructure.client.ProductClient
-import com.itau.infrastructure.service.ProductServiceImpl
+import com.itau.infrastructure.service.NatsService
 import io.mockk.MockKAnnotations
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
@@ -16,10 +16,10 @@ import org.junit.jupiter.api.extension.ExtendWith
 import java.math.BigDecimal
 
 @ExtendWith(MockKExtension::class)
-class ProductServiceImplTest {
+class ProductServicePortImplTest {
 
-    @InjectMockKs
-    lateinit var producerServiceImplImpl: ProductServiceImpl
+   /* @InjectMockKs
+    lateinit var producerServiceImpl: NatsService
 
     @MockK
     lateinit var productClient: ProductClient
@@ -40,9 +40,9 @@ class ProductServiceImplTest {
 
     @Test
     fun `sending event`() {
-/*        every { productClient.send(eventsInformationDto) } returns Unit
+*//*        every { productClient.send(eventsInformationDto) } returns Unit
         val result = producerServiceImplImpl.testNats(productDto)
         Assertions.assertNotNull(result)
+    }*//*
     }*/
-    }
 }
