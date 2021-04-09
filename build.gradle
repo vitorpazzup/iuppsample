@@ -35,18 +35,14 @@ dependencies {
 
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
-
-    //handler
+    implementation("io.swagger.core.v3:swagger-annotations")
+    kapt("io.micronaut.openapi:micronaut-openapi")
     annotationProcessor("io.micronaut:micronaut-validation")
     //Test
     kaptTest "io.micronaut:micronaut-inject-java"
     testImplementation "io.micronaut.test:micronaut-test-kotlintest:2.3.2"
     testImplementation "io.mockk:mockk:1.10.4"
     testImplementation "io.kotlintest:kotlintest-runner-junit5:3.3.2"
-
-
-
-
 }
 
 
@@ -71,7 +67,11 @@ tasks {
     }
 
 }
-
+kapt {
+    arguments {
+        arg("micronaut.openapi.views.spec", "redoc.enabled=true,rapidoc.enabled=true,swagger-ui.enabled=true,swagger-ui.theme=flattop")
+    }
+}
 test {
     useJUnitPlatform()
 }
