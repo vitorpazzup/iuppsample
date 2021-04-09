@@ -1,4 +1,12 @@
 micronaut:
+  router:
+    static-resources:
+      swagger:
+        paths: classpath:META-INF/swagger
+        mapping: /swagger/**
+      swagger-ui:
+        paths: classpath:META-INF/swagger/views/swagger-ui
+        mapping: /swagger-ui/**
   env:
     deduction: false
   environments: dev
@@ -13,6 +21,6 @@ endpoints:
     enabled: true
 nats:
   addresses:
-    - "nats://nats-cluster.nats-io:4222"
+    - "nats://localhost:4223"
   username: "nats-user"
   password: 'eyJhbGciOiJSUzI1NiIsImtpZCI6IjI0M2Q3ZDc2ZjhhNGMwYWMwYWQ2NDAzMWQzNjRjMzA3NDdhYWM1YmIifQ.eyJhdWQiOlsibmF0czovL25hdHMtY2x1c3Rlci5uYXRzLWlvLnN2YyJdLCJleHAiOjE2MTc2NjM0ODIsImlhdCI6MTYxNzY1OTg4MiwiaXNzIjoiaHR0cHM6Ly9vaWRjLmVrcy5zYS1lYXN0LTEuYW1hem9uYXdzLmNvbS9pZC84RDM5OEI4MDgzOEU4M0VBMTFFMkNFRjRCMzBEMjZFRSIsImt1YmVybmV0ZXMuaW8iOnsibmFtZXNwYWNlIjoibmF0cy1pbyIsInNlY3JldCI6eyJuYW1lIjoibmF0cy11c2VyLW5hdHMtY2x1c3Rlci1ib3VuZC10b2tlbiIsInVpZCI6ImNiMDdjODM3LWMyNTEtNGJhYy1hMDhiLTU4Nzg5MTQ3ODU0MiJ9LCJzZXJ2aWNlYWNjb3VudCI6eyJuYW1lIjoibmF0cy11c2VyIiwidWlkIjoiYjBjZDI2OGUtNTM1Yy00YWMzLWIyOWUtMmVkNzEwYTcxYzljIn19LCJuYmYiOjE2MTc2NTk4ODIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpuYXRzLWlvOm5hdHMtdXNlciJ9.qMasmYbRR-sp9fazn0piP10CSjsFtHQFD8ydrEMUgqsj9Nt959XNfGfN36FhbRPraWRscGvrq1oMOSGGTZHZyBpLH74meb16mUV2tu1kMEtPBUw0DLOH2ygM6sHi_J-I6GtOrKamK0OlJqILDLsMBA_B8NXOtlHvkcYYdc-dFtab9s6Ztt-mCEBMyD4HQIauwcaZlVW0JOecQ85eEbQGyhhD308lH3eEDAVWEMbehV7E405VkJPnjUgWlxVBcEkD_guGKQNyU0l09GeXuZAOj9zoM0SlWPMCnRwlivbAxYoYeP0wE9a5vVdtJzmWl19I0w6G5rMyoGbdrj2bwIzaAQ'

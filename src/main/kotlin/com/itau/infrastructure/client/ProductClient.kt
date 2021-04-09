@@ -1,9 +1,8 @@
-package com.itau.client
+package com.itau.infrastructure.client
 
-import com.itau.model.EventsInformationDto
+import com.itau.infrastructure.model.EventsInformationDto
 import io.micronaut.nats.annotation.NatsClient
 import io.micronaut.nats.annotation.Subject
-
 import javax.inject.Singleton
 
 @NatsClient
@@ -11,6 +10,4 @@ import javax.inject.Singleton
 interface ProductClient {
     @Subject("my-products")
     fun send(eventsInformationDto: EventsInformationDto)
-
-    fun sendProduct()
 }

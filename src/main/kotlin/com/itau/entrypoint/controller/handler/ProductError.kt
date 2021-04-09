@@ -1,4 +1,4 @@
-package com.itau.controller.handler
+package com.itau.entrypoint.controller.handler
 
 data class ProductError(
     val error: String = "",
