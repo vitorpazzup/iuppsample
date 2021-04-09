@@ -8,7 +8,6 @@ fun main(args: Array<String>) {
 	build()
 	    .args(*args)
 		.packages("com.itau")
-		.environmentVariableExcludes(Environment.KUBERNETES,Environment.AMAZON_EC2,Environment.CLOUD)
 		.environments("dev")
 		.start()
 }
