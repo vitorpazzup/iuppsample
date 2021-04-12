@@ -1,8 +1,8 @@
-package com.itau.model
+package com.itau.infrastructure.model
 
 import java.math.BigDecimal
 
 data class EventsInformationDto(
     val events: Events = Events.SAVE_PRODUCT,
-    val product: Product = Product(null,"", BigDecimal.ZERO)
+    val product: ProductEvent = ProductEvent(null,"", BigDecimal.ZERO)
 )

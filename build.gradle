@@ -7,7 +7,7 @@ plugins {
 }
 
 version = "0.1"
-group = "com.itau.iupp"
+group = "com.itau"
 
 repositories {
     mavenCentral()
@@ -18,7 +18,7 @@ micronaut {
     testRuntime("junit5")
     processing {
         incremental(true)
-        annotations("com.itau.iupp.*")
+        annotations("com.itau.*")
     }
 }
 
@@ -30,20 +30,19 @@ dependencies {
     implementation("io.micronaut:micronaut-runtime")
     implementation("javax.annotation:javax.annotation-api")
     implementation("io.micronaut:micronaut-http-client")
-    implementation("io.micronaut.nats:micronaut-nats")
     implementation("io.micronaut:micronaut-management")
+    implementation("io.micronaut.nats:micronaut-nats")
 
-    //handler
+    runtimeOnly("ch.qos.logback:logback-classic")
+    runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation("io.swagger.core.v3:swagger-annotations")
+    kapt("io.micronaut.openapi:micronaut-openapi")
     annotationProcessor("io.micronaut:micronaut-validation")
     //Test
     kaptTest "io.micronaut:micronaut-inject-java"
     testImplementation "io.micronaut.test:micronaut-test-kotlintest:2.3.2"
     testImplementation "io.mockk:mockk:1.10.4"
     testImplementation "io.kotlintest:kotlintest-runner-junit5:3.3.2"
-
-    runtimeOnly("ch.qos.logback:logback-classic")
-    runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
-
 }
 
 
@@ -68,7 +67,11 @@ tasks {
     }
 
 }
-
+kapt {
+    arguments {
+        arg("micronaut.openapi.views.spec", "redoc.enabled=true,rapidoc.enabled=true,swagger-ui.enabled=true,swagger-ui.theme=flattop")
+    }
+}
 test {
     useJUnitPlatform()
 }

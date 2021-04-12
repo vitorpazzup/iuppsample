@@ -1,15 +1,13 @@
-package com.itau.controller
+package com.itau.entrypoint.controller
 
-import com.itau.controller.handler.ProductException
-import com.itau.model.dto.ProductDto
-import com.itau.service.ProductService
-import com.itau.service.impl.ProductServiceImpl
+import com.itau.core.ports.ProductServicePort
+import com.itau.entrypoint.controller.handler.ProductException
+import com.itau.entrypoint.dto.ProductDto
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
-import io.mockk.mockkObject
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -23,7 +21,7 @@ class ProductControllerTest {
     lateinit var producerController: ProductController
 
     @MockK
-    lateinit var productService: ProductService
+    lateinit var productServicePort: ProductServicePort
     lateinit var product: ProductDto
 
     @BeforeEach
@@ -34,10 +32,11 @@ class ProductControllerTest {
 
     @Test
     fun `request product with success`() {
-        every { productService.testNats(any()) } returns product
+        every { productServicePort.productMessage(any()) } returns product
         val result = producerController.saveProduct(product)
         Assertions.assertEquals(product, result)
     }
+
     @Test
     fun `request product with error in name parameter`(){
             assertThrows<ProductException> {

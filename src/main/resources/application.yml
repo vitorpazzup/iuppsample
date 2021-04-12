@@ -1,6 +1,17 @@
 micronaut:
+  router:
+    static-resources:
+      swagger:
+        paths: classpath:META-INF/swagger
+        mapping: /swagger/**
+      swagger-ui:
+        paths: classpath:META-INF/swagger/views/swagger-ui
+        mapping: /swagger-ui/**
+  env:
+    deduction: false
+  environments: dev
   server:
-    port: 8082
+    port: 8080
     netty:
       log-level: DEBUG
   application:
@@ -10,6 +21,6 @@ endpoints:
     enabled: true
 nats:
   addresses:
-    - "localhost:4222"
-  username: guest
-  password: guest
+    - "nats://nats-cluster.nats-io:4222"
+  username: "nats-user"
+  password: "RYe6uCUFxC8q"
