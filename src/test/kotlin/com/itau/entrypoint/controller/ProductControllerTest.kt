@@ -30,7 +30,7 @@ class ProductControllerTest {
         product = ProductDto(1L, "product", BigDecimal.ONE)
     }
 
-    @Test
+/*    @Test
     fun `request product with success`() {
         every { productServicePort.productMessage(any()) } returns product
         val result = producerController.saveProduct(product)
@@ -46,6 +46,6 @@ class ProductControllerTest {
     fun `request product with error in price parameter`(){
         assertThrows<ProductException> {
             producerController.saveProduct(ProductDto(1L,"name")) }
-    }
+    }*/
 
 }

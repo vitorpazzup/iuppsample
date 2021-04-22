@@ -1,14 +1,14 @@
-# Default values for baseapp.
+# Default values for chart-sample.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  repository: panunu/iuupsample
-  pullPolicy: Always
+  repository: panunu/iuppsample
+  pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v1.0.0"
+  tag: "v1.0.1"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -22,6 +22,28 @@ serviceAccount:
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
   name: ""
+
+configMap:
+  # Specifies whether a config map should be created
+  create: true
+  # Annotations to add to the config map
+  annotations: {}
+  # The name of the config map to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+  data:
+    nats_host: "nats://nats-cluster.nats-io"
+    nats_port: 4222
+
+secret:
+  # Specifies whether a secret should be created
+  create: true
+  # Annotations to add to the secret
+  annotations: {}
+  # The name of the secret to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+  data: {}
 
 podAnnotations: {}
 
@@ -47,39 +69,64 @@ ingress:
     # kubernetes.io/tls-acme: "true"
   hosts:
     - host: baseapp.dev.iupp.io
-      paths: [/]
+      paths:
+        - path: /
+          pathType: Prefix
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
 
 resources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   # limits:
-  #   cpu: 500m
-  #   memory: 512Mi
+  #   cpu: 100m
+  #   memory: 128Mi
   # requests:
-  #   cpu: 500m
-#   memory: 512Mi
-configmap:
-  enabled: true
-  metadata:
-    name: iupp-sample
-  data:
-    application.yaml:
-      nats:
-        addresses: "nats://localhost:4223"
-        password: 'eyJhbGciOiJSUzI1NiIsImtpZCI6IjI0M2Q3ZDc2ZjhhNGMwYWMwYWQ2NDAzMWQzNjRjMzA3NDdhYWM1YmIifQ.eyJhdWQiOlsibmF0czovL25hdHMtY2x1c3Rlci5uYXRzLWlvLnN2YyJdLCJleHAiOjE2MTc2NjM0ODIsImlhdCI6MTYxNzY1OTg4MiwiaXNzIjoiaHR0cHM6Ly9vaWRjLmVrcy5zYS1lYXN0LTEuYW1hem9uYXdzLmNvbS9pZC84RDM5OEI4MDgzOEU4M0VBMTFFMkNFRjRCMzBEMjZFRSIsImt1YmVybmV0ZXMuaW8iOnsibmFtZXNwYWNlIjoibmF0cy1pbyIsInNlY3JldCI6eyJuYW1lIjoibmF0cy11c2VyLW5hdHMtY2x1c3Rlci1ib3VuZC10b2tlbiIsInVpZCI6ImNiMDdjODM3LWMyNTEtNGJhYy1hMDhiLTU4Nzg5MTQ3ODU0MiJ9LCJzZXJ2aWNlYWNjb3VudCI6eyJuYW1lIjoibmF0cy11c2VyIiwidWlkIjoiYjBjZDI2OGUtNTM1Yy00YWMzLWIyOWUtMmVkNzEwYTcxYzljIn19LCJuYmYiOjE2MTc2NTk4ODIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpuYXRzLWlvOm5hdHMtdXNlciJ9.qMasmYbRR-sp9fazn0piP10CSjsFtHQFD8ydrEMUgqsj9Nt959XNfGfN36FhbRPraWRscGvrq1oMOSGGTZHZyBpLH74meb16mUV2tu1kMEtPBUw0DLOH2ygM6sHi_J-I6GtOrKamK0OlJqILDLsMBA_B8NXOtlHvkcYYdc-dFtab9s6Ztt-mCEBMyD4HQIauwcaZlVW0JOecQ85eEbQGyhhD308lH3eEDAVWEMbehV7E405VkJPnjUgWlxVBcEkD_guGKQNyU0l09GeXuZAOj9zoM0SlWPMCnRwlivbAxYoYeP0wE9a5vVdtJzmWl19I0w6G5rMyoGbdrj2bwIzaAQ'
+  #   cpu: 100m
+#   memory: 128Mi
 
 autoscaling:
   enabled: true
   minReplicas: 1
   maxReplicas: 10
   targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
+
+canary:
+  enabled: false
+  # the maximum time in seconds for the canary deployment
+  # to make progress before it is rollback (default 600s)
+  progressDeadlineSeconds: 60
+  gateways: []
+  # Istio traffic policy (optional)
+  trafficPolicy:
+    mode: DISABLE # use ISTIO_MUTUAL when mTLS is enabled
+  retries: {}
+    # attempts: 3
+    # perTryTimeout: 1s
+  # retryOn: "gateway-error,connect-failure,refused-stream"
+  analysis:
+    # schedule interval (default 60s)
+    interval: 1m
+    # max number of failed metric checks before rollback
+    threshold: 5
+    # max traffic percentage routed to canary percentage (0-100)
+    maxWeight: 50
+    # canary increment step percentage (0-100)
+    stepWeight: 10
+    # See https://docs.flagger.app/usage/metrics
+    metrics:
+      - name: request-success-rate
+        thresholdRange:
+          min: 99
+        interval: 1m
+      - name: request-duration
+        thresholdRange:
+          max: 500
+        interval: 30s
+    # Use webhooks for automated tests
+    # See https://docs.flagger.app/usage/webhooks
+    webhooks: {}
 
 nodeSelector: {}
 

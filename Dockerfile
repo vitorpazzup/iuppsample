@@ -1,6 +1,6 @@
-FROM gcr.io/distroless/java:11
+FROM openjdk:17-jdk-alpine3.13
 
 COPY /build/libs /app
 WORKDIR /app
 
-CMD ["iuppsample-0.1-all.jar"]
+ENTRYPOINT ["java", "-jar", "iuppsample-0.1-all.jar"]
