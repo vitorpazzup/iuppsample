@@ -1,5 +1,4 @@
 micronaut:
-  environments: dev
   router:
     static-resources:
       swagger:
