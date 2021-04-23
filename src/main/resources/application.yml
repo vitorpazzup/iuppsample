@@ -1,4 +1,8 @@
 micronaut:
+  server:
+    port: 8080
+  application:
+    name: iupp-sample
   router:
     static-resources:
       swagger:
@@ -7,17 +11,13 @@ micronaut:
       swagger-ui:
         paths: classpath:META-INF/swagger/views/swagger-ui
         mapping: /swagger-ui/**
-  server:
-    port: 8080
-    netty:
-      log-level: DEBUG
-  application:
-    name: demo
+## Health
 endpoints:
   health:
     enabled: true
+## Nats
 nats:
-  host: ${nats_host:localhost}
-  port: ${nats_port:4222}
-  username: "nats-user"
-  password: 'RYe6uCUFxC8q'
+  enabled: false
+  addresses: ${nats_host:localhost}
+  username: ${nats_username:guest}
+  password: ${nats_password:guest}

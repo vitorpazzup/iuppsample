@@ -10,6 +10,7 @@ import io.micronaut.http.annotation.*
 
 @Controller("/iupp/v1/product")
 class ProductController(private val service: ProductServicePort) {
+    
     @Post
     @Consumes(MediaType.APPLICATION_JSON)
     fun saveProduct(@Body productDto: ProductDto): ProductDto {

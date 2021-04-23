@@ -8,7 +8,7 @@ image:
   repository: panunu/iuppsample
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v1.0.1"
+  tag: "v1.0.4"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -32,8 +32,9 @@ configMap:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
   data:
-    nats_host: "nats://nats-cluster.nats-io"
-    nats_port: 4222
+    nats_host: "nats://nats-cluster.nats-io:4222"
+    nats_username: "nats-user"
+    nats_password: 'RYe6uCUFxC8q'
 
 secret:
   # Specifies whether a secret should be created
