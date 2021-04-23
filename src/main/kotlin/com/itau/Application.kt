@@ -23,7 +23,6 @@ fun main(args: Array<String>) {
 	build()
 	    .args(*args)
 		.packages("com.itau")
-		.environments("dev")
 		.start()
 }
 
