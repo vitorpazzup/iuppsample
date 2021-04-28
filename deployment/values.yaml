@@ -47,7 +47,12 @@ ingress:
     # kubernetes.io/tls-acme: "true"
   hosts:
     - host: baseapp.dev.iupp.io
-      paths: [/]
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          serviceName: baseapp.dev.iupp.io
+          servicePort: 80
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
