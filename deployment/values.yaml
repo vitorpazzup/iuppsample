@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: panunu/iuppsample
+  repository: 996041048228.dkr.ecr.sa-east-1.amazonaws.com/sample-app-kotlin
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v1.0.4"
+  tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
@@ -134,3 +134,11 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+stream:
+  create: true
+  data:
+    subjects: ["platform.*"]
+    maxAge: 1h
+    replicas: 1
+    storage: file

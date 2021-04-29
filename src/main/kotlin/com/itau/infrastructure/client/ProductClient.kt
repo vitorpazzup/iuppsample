@@ -8,6 +8,6 @@ import javax.inject.Singleton
 @NatsClient
 @Singleton
 interface ProductClient {
-    @Subject("my-products")
+    @Subject("platform.products")
     fun send(eventsInformationDto: EventsInformationDto)
 }
