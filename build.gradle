@@ -32,13 +32,11 @@ dependencies {
     implementation("io.micronaut:micronaut-http-client")
     implementation("io.micronaut:micronaut-management")
     implementation("io.micronaut.nats:micronaut-nats")
-
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("io.swagger.core.v3:swagger-annotations")
     kapt("io.micronaut.openapi:micronaut-openapi")
-    annotationProcessor("io.micronaut:micronaut-validation")
-    //Test
+
     kaptTest "io.micronaut:micronaut-inject-java"
     testImplementation "io.micronaut.test:micronaut-test-kotlintest:2.3.2"
     testImplementation "io.mockk:mockk:1.10.4"
