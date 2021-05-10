@@ -148,7 +148,7 @@ probes:
   # For probe configuration reference see: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
   livenessProbe: 
     httpGet:
-      path: /healthz
+      path: /health
       port: http
     initialDelaySeconds: 5
     periodSeconds: 3
@@ -157,14 +157,22 @@ probes:
     failureThreshold: 1
   readinessProbe:
     httpGet:
-      path: /
+      path: /health
       port: http
     initialDelaySeconds: 10
     periodSeconds: 3
     timeoutSeconds: 1
     successThreshold: 1
     failureThreshold: 1
-  startupProbe: {}
+  startupProbe:
+    httpGet:
+      path: /health
+      port: http
+    initialDelaySeconds: 5
+    periodSeconds: 3
+    timeoutSeconds: 1
+    successThreshold: 1
+    failureThreshold: 1
 
 stream:
   create: true
