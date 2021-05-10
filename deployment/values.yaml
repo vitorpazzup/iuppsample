@@ -138,6 +138,34 @@ tolerations: []
 
 affinity: {}
 
+probes:
+  # This section must content all probes configurations
+  # To disable probes configuration set probe value empty 
+  # Example:
+  #  livenessProbe: {}
+  #  readinessProbe: {}
+  #  startupProbe: {}
+  # For probe configuration reference see: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+  livenessProbe: 
+    httpGet:
+      path: /healthz
+      port: http
+    initialDelaySeconds: 5
+    periodSeconds: 3
+    timeoutSeconds: 1
+    successThreshold: 1
+    failureThreshold: 1
+  readinessProbe:
+    httpGet:
+      path: /
+      port: http
+    initialDelaySeconds: 10
+    periodSeconds: 3
+    timeoutSeconds: 1
+    successThreshold: 1
+    failureThreshold: 1
+  startupProbe: {}
+
 stream:
   create: true
   data:
